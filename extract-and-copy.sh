@@ -42,11 +42,11 @@ for LIBRARY in "$ROOT_FOLDER"/*.photoslibrary; do
 
                
         # Extract and copy photos from the folder
-        osxphotos export --update --export-by-date --db "$LIBRARY" "$DESTINATION_FOLDER"
+        #osxphotos export --update --export-by-date --db "$LIBRARY" "$DESTINATION_FOLDER"
         
         # Copy the photos to the destination folder
         echo "Copying photos from $DESTINATION_FOLDER to Immich"
-        immich upload -r $DESTINATION_FOLDER -H -a -k $IMMICH_API_KEY -u $IMMICH_URL
+        immich upload -r "$DESTINATION_FOLDER" -H -a -k $IMMICH_API_KEY -u $IMMICH_URL
     #ßfi
 done
 
