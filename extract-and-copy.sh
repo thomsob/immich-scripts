@@ -4,8 +4,8 @@
 # and immich CLI and server running at $IMMICH_URL
 
 IMMICH_URL="http://192.168.0.154:30041"
-ROOT_FOLDER=/Volumes/nvme/check-as-off-Nov-2026
-DESTINATION_FOLDER_ROOT=/Volumes/WD_BLACK/photos-export
+ROOT_FOLDER=/Volumes/WD_BLACK/photos-to-do/libraries
+DESTINATION_FOLDER_ROOT=/Volumes/WD_BLACK/photos-to-do/photos-export
 
 if [ ! -d "$DESTINATION_FOLDER_ROOT" ]; then
     echo "Destination folder $DESTINATION_FOLDER_ROOT does not exist. Creating it now."
@@ -42,7 +42,7 @@ for LIBRARY in "$ROOT_FOLDER"/*.photoslibrary; do
 
                
         # Extract and copy photos from the folder
-        #osxphotos export --update --export-by-date --db "$LIBRARY" "$DESTINATION_FOLDER"
+        osxphotos export --update --export-by-date --db "$LIBRARY" "$DESTINATION_FOLDER"
         
         # Copy the photos to the destination folder
         echo "Copying photos from $DESTINATION_FOLDER to Immich"

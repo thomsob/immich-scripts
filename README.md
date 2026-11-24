@@ -29,6 +29,27 @@ python3 delete-img-albums.py --apply
 
 It uses the same `IMMICH_URL` and `IMMICH_API_KEY` settings as `list-albums.py`.
 
+## Find thumbnails and small images
+
+`find_thumbnail_albums.py` scans image assets and previews album updates by
+default. It identifies thumbnail-like images by a thumbnail suffix in the
+filename (`thumb`, `thumbnail`, `preview`, or `small`) or dimensions no larger
+than 512 pixels on either side. A thumbnail is considered to have a clear
+original match only when exactly one non-thumbnail has the same normalized
+filename stem. Matched thumbnails go into `to-be-deleted`; thumbnails without
+a unique match go into `possible-to-be-deleted`. All images smaller than
+1,000,000 bytes go into `small images album`, including any thumbnails.
+
+Review the preview, then pass `--apply` to create or update those albums. The
+script does not delete assets.
+
+```sh
+python3 find_thumbnail_albums.py
+python3 find_thumbnail_albums.py --apply
+```
+
+It uses the same `IMMICH_URL` and `IMMICH_API_KEY` settings as `list-albums.py`.
+
 ## Delete date-prefixed albums
 
 `delete-date-albums.py` targets owned albums whose names start with a date in
